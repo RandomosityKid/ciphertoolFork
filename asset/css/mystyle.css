@@ -83,6 +83,24 @@ body.light-mode {
     }
 }
 
+/* Media Screen */
+@media screen and (max-width: 1279px) {
+    .main-section .div-button-encode {
+        margin-top: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .main-section select {
+        font-size: 1.1rem;
+        padding: .5rem;
+    }
+
+    .main-section .div-button-clear {
+        margin-top: 0.5rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .header .container {
         padding-top: 2rem;
@@ -103,22 +121,5 @@ body.light-mode {
     .main-section select {
         font-size: 1.125rem;
         padding: 1rem;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .main-section select {
-        font-size: 1.1rem;
-        padding: .5rem;
-    }
-
-    .main-section .div-button-clear {
-        margin-top: 0.5rem;
-    }
-}
-
-@media screen and (max-width: 1279px) {
-    .main-section .div-button-encode {
-        margin-top: 0.5rem;
     }
 }

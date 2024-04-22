@@ -20,17 +20,34 @@
     <!-- Custome JS -->
     <script src="asset/js/script.js" defer></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                container: {
+                padding: {
+                    DEFAULT: '1rem',
+                    sm: '2rem', // sm (640px)
+                    md: '3rem', // md (768px)
+                    lg: '4rem', // lg (1024px)	
+                    xl: '5rem', // xl (1280px)
+                    '2xl': '6rem', // 2xl (1536px)	
+                },
+                },
+            },
+        }
+    </script>
+
     <style type="text/tailwindcss">
         @layer utilities {
           .content-auto {
             content-visibility: auto;
           }
         }
-      </style>
+    </style>
 </head>
 <body class="m-0 p-0 box-border"> <!-- Set initial class to light-mode/dark-mode -->
     <section class="header">
-        <div class="container md:container md:mx-auto mx-auto columns-2 py-[3rem]">
+        <div class="container sm:container md:container lg:container xl:container 2xl:container sm:mx-auto md:mx-auto lg:mx-auto xl:mx-auto 2xl:mx-auto mx-auto columns-2 py-[3rem]">
             <div class="flex flex-wrap items-center">
                 <img class="w-[2rem] h-[2rem]" src="img/encryption.png" alt="Logo">
                 <h1 class="logo-text text-3xl text-sky-600 pl-3">Ciphers</h1>
