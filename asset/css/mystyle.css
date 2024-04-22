@@ -1,0 +1,124 @@
+/* 
+label - border .1rem
+textarea - border .1rem
+select - border .1rem 
+*/
+
+.fa-moon-o,
+.fa-sun-o {
+    font-size: 1.875rem;
+    cursor: pointer;
+}
+
+/* Dark Mode */
+:root {
+    --dark-mode: #202124;
+    --light-mode: #ffffff;
+    --text-sky-400: #38bdf8;
+    --text-sky-500: #0ea5e9;
+    --textarea-dark-mode: #292a2d;
+    --textarea-light-mode: #f2f2f2;
+    --select-dark-mode: #292a2d;
+    --border-dark-mode: #5f6368;
+    --border-light-mode: #d1d5db;
+    --bg-btn-sky-400: #38bdf8;
+    --bg-btn-sky-500: #0ea5e9;
+    --bg-btn-sky-600: #0284c7;
+    --bg-btn-sky-700: #0369a1;
+}
+
+body.dark-mode {
+    background-color: var(--dark-mode);
+}
+
+body.light-mode {
+    background-color: var(--light-mode);
+}
+
+@media (prefers-color-scheme: dark) {
+    .dark-mode {
+        background-color: var(--dark-mode);
+        color: white;
+    }
+
+    .logo-text {
+        color: var(--text-sky-400);
+    }
+
+    #sun-light {
+        color: var(--text-sky-400);
+    }
+
+    #sun-light:hover {
+        color: var(--text-sky-500);
+    }
+
+    .div-label {
+        border: .1rem solid var(--border-dark-mode);
+    }
+
+    textarea {
+        background-color: var(--textarea-dark-mode);
+        color: white;
+        border: .1rem solid var(--border-dark-mode);
+    }
+
+    select {
+        background-color: var(--select-dark-mode);
+        color: white;
+        border: .1rem solid var(--border-dark-mode);
+    }
+}
+
+@media (prefers-color-scheme: light) {
+    .light-mode {
+        background-color: var(--light-mode);
+        color: black;
+    }
+
+    textarea {
+        background-color: var(--textarea-light-mode);
+        color: black;
+        border: .1rem solid var(--border-light-mode);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .header .container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+
+    .main-section .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .main-section .main-categories {
+        padding: 1rem 0;
+        height: 100%;
+    }
+
+    .main-section select {
+        font-size: 1.125rem;
+        padding: 1rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .main-section select {
+        font-size: 1.1rem;
+        padding: .5rem;
+    }
+
+    .main-section .div-button-clear {
+        margin-top: 0.5rem;
+    }
+}
+
+@media screen and (max-width: 1279px) {
+    .main-section .div-button-encode {
+        margin-top: 0.5rem;
+    }
+}
