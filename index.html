@@ -28,22 +28,14 @@
                     DEFAULT: '1rem',
                     sm: '2rem', // sm (640px)
                     md: '3rem', // md (768px)
-                    lg: '4rem', // lg (1024px)	
-                    xl: '5rem', // xl (1280px)
-                    '2xl': '6rem', // 2xl (1536px)	
+                    lg: '3rem', // lg (1024px)	
+                    xl: '4rem', // xl (1280px)
+                    '2xl': '5rem', // 2xl (1536px)	
                 },
                 },
             },
         }
     </script>
-
-    <style type="text/tailwindcss">
-        @layer utilities {
-          .content-auto {
-            content-visibility: auto;
-          }
-        }
-    </style>
 </head>
 <body class="m-0 p-0 box-border"> <!-- Set initial class to light-mode/dark-mode -->
     <section class="header">
@@ -69,7 +61,7 @@
                 <div class="div-label py-5 pl-3 border-[.1rem] border-gray-300">
                     <label class="text-lg" for="text">Text</label>
                 </div>
-                <textarea style="resize: none;" class="border-[.1rem] border-gray-300 w-full p-2" type="text" id="text" rows="20"></textarea>
+                <textarea style="resize: none;" class="border-[.1rem] border-gray-300 w-full" type="text" id="text" rows="15"></textarea>
             </div>
     
             <div class="main-categories w-[80%] text-center">
@@ -80,16 +72,16 @@
                     <option>Mexico</option>
                 </select>
                 <br><br>
-                <button class="div-button-decode px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-2xl">Decode</button>
-                <button class="div-button-clear px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-2xl">Clear</button>
-                <button class="div-button-encode px-8 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-2xl">Encode</button>
+                <button class="div-button-decode px-5 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-2xl">Decode</button>
+                <button class="div-button-clear px-5 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-2xl">Clear</button>
+                <button class="div-button-encode px-5 py-3 bg-sky-600 hover:bg-sky-700 text-white rounded-2xl">Encode</button>
             </div>
     
             <div class="w-full">
                 <div class="div-label py-5 pl-3 border-[.1rem] border-gray-300">
                     <label class="text-lg" for="text">base64</label>
                 </div>
-                <textarea style="resize: none;" class="border-[.1rem] border-gray-300 w-full p-2" type="text" id="text" rows="20"></textarea>
+                <textarea style="resize: none;" class="border-[.1rem] border-gray-300 w-full" type="text" id="text" rows="15"></textarea>
             </div>
         </div>
     </section>
