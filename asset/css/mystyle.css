@@ -97,7 +97,6 @@ body.light-mode {
     }
 }
 
-
 @media screen and (max-width: 768px) {
     .header .container {
         padding-top: 2rem;
@@ -113,6 +112,12 @@ body.light-mode {
     .main-section .main-categories {
         padding: 1rem 0;
         height: 100%;
+    }
+
+    .main-section select {
+        font-size: 1.125rem;
+        line-height: 1.75rem;
+        padding: 1rem;
     }
 
     .main-section .div-button-encode {
