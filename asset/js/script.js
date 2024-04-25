@@ -4,82 +4,42 @@ window.onload = function() {
     const sunLight = document.getElementById("sun-light");
     
     const handleThemeChange = (e) => {
+		const isDarkMode = e.matches;
         const logoText = document.getElementsByClassName("logo-text");
         const labelText = document.getElementsByClassName("div-label");
         const textareas = document.querySelectorAll("textarea");
         const selects = document.querySelectorAll("select");
-        
-        if (e.matches) {
-            body.classList.remove("light-mode");
-            body.classList.add("dark-mode");
-            sunLight.style.display = "block";
-            moonDark.style.display = "none";
-            
-            // For logo text
-            for (let i = 0; i < logoText.length; i++) {
-                logoText[i].style.color = "#38bdf8";
-            }
-            
-            // For sunlight icon
-            sunLight.addEventListener("mouseenter", function() {
-                sunLight.style.color = "#0ea5e9";
-            });
-    
-            sunLight.addEventListener("mouseleave", function() {
-                sunLight.style.color = "#38bdf8";
-            });
 
-            // For label div
-            for (let i = 0; i < labelText.length; i++) {
-                labelText[i].style.border = ".1rem solid #5f6368";
-                labelText[i].style.color = "white";
-            }
-            // For textarea    
-            textareas.forEach(textarea => {
-                textarea.style.backgroundColor = "#292a2d";
-                textarea.style.color = "white";
-                textarea.style.border = ".1rem solid #5f6368";
-            });
-            
-            // For select
-            selects.forEach(select => {
-                select.style.backgroundColor = "#292a2d";
-                select.style.color = "white";
-                select.style.border = ".1rem solid #5f6368";
-            });
-            
-        } else {
-            body.classList.remove("dark-mode");
-            body.classList.add("light-mode");
-            sunLight.style.display = "none";
-            moonDark.style.display = "block";
+		body.classList.remove(isDarkMode ? "light-mode" : "dark-mode");
+        body.classList.add(isDarkMode ? "dark-mode" : "light-mode");
+		sunLight.style.display = isDarkMode ? "block" : "none";
+		moonDark.style.display = isDarkMode ? "none" : "block";
 
-            // For logo text
-            for (let i = 0; i < logoText.length; i++) {
-                logoText[i].style.color = "#0284c7";
-            }
+		Array.from(logoText).forEach(text => {
+			text.style.color = isDarkMode ? "#38bdf8" : "#0284c7";
+		});
 
-            // For label div
-            for (let i = 0; i < labelText.length; i++) {
-                labelText[i].style.border = ".1rem solid #d1d5db";
-                labelText[i].style.color = "black";
-            }
-            
-            // For textarea
-            textareas.forEach(textarea => {
-                textarea.style.backgroundColor = "#f2f2f2";
-                textarea.style.color = "black";
-                textarea.style.border = ".1rem solid #d1d5db";
-            });
-            
-            // For select
-            selects.forEach(select => {
-                select.style.backgroundColor = "#f2f2f2";
-                select.style.color = "black";
-                select.style.border = ".1rem solid #d1d5db";
-            });
-        }
-    }
+		if (isDarkMode) {
+			sunLight.addEventListener("mouseenter", () => sunLight.style.color = "#0ea5e9");
+			sunLight.addEventListener("mouseleave", () => sunLight.style.color = "#38bdf8");
+		}
+		
+		//	Helper function to apply styles to border/color
+		function applyStyles(elements, hasBackground = false){
+			elements.forEach(element => {
+				element.style.border = isDarkMode ? ".1rem solid #5f6368" : ".1rem solid #d1d5db";
+				element.style.color = isDarkMode ? "white" : "black";
+				if(hasBackground){
+					element.style.backgroundColor = isDarkMode ? "#292a2d" : "#f2f2f2";
+				}
+			});
+		}
+		
+		applyStyles(Array.from(labelText));
+		applyStyles(textareas, true);
+		applyStyles(selects, true);
+
+    };
 
     // Check initial theme
     const darkMode = window.matchMedia('(prefers-color-scheme: dark)');
@@ -98,76 +58,37 @@ function toggleDarkLightMode() {
     const labelText = document.getElementsByClassName("div-label");
     const textareas = document.querySelectorAll("textarea");
     const selects = document.querySelectorAll("select");
-    
-    if (body.classList.contains("dark-mode")) {
-        body.classList.remove("dark-mode");
-        body.classList.add("light-mode");
-        sunLight.style.display = "none";
-        moonDark.style.display = "block";
 
-        // For logo text
-        for (let i = 0; i < logoText.length; i++) {
-            logoText[i].style.color = "#0284c7";
-        }
+	const isDarkMode = body.classList.contains("dark-mode");
 
-        // For label div
-        for (let i = 0; i < labelText.length; i++) {
-            labelText[i].style.border = ".1rem solid #d1d5db";
-            labelText[i].style.color = "black";
-        }
-        
-        // For textarea
-        textareas.forEach(textarea => {
-            textarea.style.backgroundColor = "#f2f2f2";
-            textarea.style.color = "black";
-            textarea.style.border = ".1rem solid #d1d5db";
-        });
-        
-        // For select
-        selects.forEach(select => {
-            select.style.backgroundColor = "#f2f2f2";
-            select.style.color = "black";
-            select.style.border = ".1rem solid #d1d5db";
-        });
+	body.classList.remove(isDarkMode ? "dark-mode" : "light-mode");
+	body.classList.add(isDarkMode ? "light-mode" : "dark-mode");
+	sunLight.style.display = isDarkMode ? "none" : "block";
+	moonDark.style.display = isDarkMode ? "block" : "none";
 
+	Array.from(logoText).forEach(element => {
+		element.style.color = isDarkMode ? "#0284c7" : "#38bdf8";
+	});
+
+	function applyStyles(elements, isDark){
+		elements.forEach(element => {
+			element.style.border = isDark ? ".1rem solid #5f6368" : ".1rem solid #d1d5db";
+			element.style.color = isDark ? "white" : "black";
+			element.style.backgroundColor = isDark ? "#292a2d" : "#f2f2f2";
+		});
+	}
+
+
+	// Check if we are toggling to dark mode and manage event listeners accordingly
+	if (isDarkMode) {
+        sunLight.removeEventListener("mouseenter", () => sunLight.style.color = "#0ea5e9");
+        sunLight.removeEventListener("mouseleave", () => sunLight.style.color = "#38bdf8");
     } else {
-        body.classList.remove("light-mode");
-        body.classList.add("dark-mode");
-        sunLight.style.display = "block";
-        moonDark.style.display = "none";
-
-        // For logo text
-        for (let i = 0; i < logoText.length; i++) {
-            logoText[i].style.color = "#38bdf8";
-        }
-       
-        // For sunlight icon
-        sunLight.addEventListener("mouseenter", function() {
-            sunLight.style.color = "#0ea5e9";
-        });
-
-        sunLight.addEventListener("mouseleave", function() {
-            sunLight.style.color = "#38bdf8";
-        });
-
-        // For label div
-        for (let i = 0; i < labelText.length; i++) {
-            labelText[i].style.border = ".1rem solid #5f6368";
-            labelText[i].style.color = "white";
-        }
-        
-        // For textarea
-        textareas.forEach(textarea => {
-            textarea.style.backgroundColor = "#292a2d";
-            textarea.style.color = "white";
-            textarea.style.border = ".1rem solid #5f6368";
-        });
-        
-        // For selection
-        selects.forEach(select => {
-            select.style.backgroundColor = "#292a2d";
-            select.style.color = "white";
-            select.style.border = ".1rem solid #5f6368";
-        });
+        sunLight.addEventListener("mouseenter", () => sunLight.style.color = "#0ea5e9");
+        sunLight.addEventListener("mouseleave", () => sunLight.style.color = "#38bdf8");
     }
+
+	applyStyles(Array.from(labelText), !isDarkMode);
+	applyStyles(textareas, !isDarkMode);
+	applyStyles(selects, !isDarkMode);
 }
